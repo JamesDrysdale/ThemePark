@@ -16,10 +16,11 @@ public class RollercoasterTest {
     @Before
     public void setUp() {
         rollerCoaster = new RollerCoaster("Blue Ridge", 10);
+        youngVisitor1 = new Visitor(13, 140, 10);
+        youngVisitor2 = new Visitor(13, 140, 10);
+        adult = new Visitor(28, 175, 90);
     }
-    youngVisitor1 = new Visitor(13, 140, 10);
-    youngVisitor2 = new Visitor(13, 140, 10);
-    adult = new Visitor(28, 175, 90);
+
 
     @Test
     public void hasName() {
@@ -51,6 +52,7 @@ public class RollercoasterTest {
         assertFalse(rollerCoaster.isAllowed(youngVisitor2));
     }
 
+    //Guests who are old enough and tall enough may ride
     @Test
     public void hasHeightAgeRestriction__OldEnoughTallEnoughCanRide(){
         assertTrue(rollerCoaster.isAllowed(adult));
