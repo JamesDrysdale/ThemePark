@@ -15,7 +15,7 @@ public class RollercoasterTest {
 
     @Before
     public void setUp() {
-        rollerCoaster = new RollerCoaster("Blue Ridge", 10);
+        rollerCoaster = new RollerCoaster("Blue Ridge", 10, 8.40;
         youngVisitor1 = new Visitor(13, 140, 10);
         youngVisitor2 = new Visitor(13, 140, 10);
         adult = new Visitor(28, 175, 90);
@@ -61,6 +61,13 @@ public class RollercoasterTest {
     @Test
     public void hasHeightRestriction145__visitorsGreaterThanRestrictionCanRide(){
         assertTrue(rollerCoaster.isAllowed(adult));
+    }
+
+    //Tests relating to pricing
+
+    @Test
+    public void hasStandardPrice(){
+        assertEquals(8.40, rollerCoaster.getPrice(), 0.02);
     }
 
 }
