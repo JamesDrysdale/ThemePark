@@ -4,22 +4,21 @@ import org.junit.Before;
 import org.junit.Test;
 import people.Visitor;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
 public class RollercoasterTest {
 
     RollerCoaster rollerCoaster;
-    Visitor youngVisitor;
-    Visitor youngAdult;
+    Visitor youngVisitor1;
+    Visitor youngVisitor2;
     Visitor adult;
 
     @Before
     public void setUp() {
         rollerCoaster = new RollerCoaster("Blue Ridge", 10);
     }
-    youngVisitor = new Visitor(12, 140, 10);
-    youngAdult = new Visitor(18, 145, 30);
+    youngVisitor1 = new Visitor(13, 140, 10);
+    youngVisitor2 = new Visitor(13, 140, 10);
     adult = new Visitor(28, 175, 90);
 
     @Test
@@ -37,14 +36,24 @@ public class RollercoasterTest {
         assertEquals(0, rollerCoaster.getVisitCount());
     }
 
+    // Tests for height & age restriction
+    // Must be over 145cm tall & over 12 years old
+
+    //Guests who are old enough but not tall enough cannot ride
     @Test
-    public void hasHeightRestriction145__visitorsLessThanRestrictionCannotRide(){
-        assertFalse(rollerCoaster.isAllowed(youngVisitor));
+    public void hasHeightAgeRestriction__TooShortButOldEnoughCannotRide(){
+        assertFalse(rollerCoaster.isAllowed(youngVisitor1));
+    }
+
+    //Guests who are tall enough but not old enough cannot ride
+    @Test
+    public void hasHeightAgeRestriction__TallEnoughNotOldEnoughCannotRide(){
+        assertFalse(rollerCoaster.isAllowed(youngVisitor2));
     }
 
     @Test
-    public void hasHeightRestriction145__visitorsExactly145CannotRide(){
-        assertFalse(rollerCoaster.isAllowed(youngAdult));
+    public void hasHeightAgeRestriction__OldEnoughTallEnoughCanRide(){
+        assertTrue(rollerCoaster.isAllowed(adult));
     }
 
     @Test
