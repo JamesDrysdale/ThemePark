@@ -70,4 +70,9 @@ public class RollercoasterTest {
         assertEquals(8.40, rollerCoaster.getPrice(), 0.02);
     }
 
+    //Will charge people over 200cm double for a ticket
+    public void willChargeDoubleForTallPeople(){
+        assertEquals(16.80, rollerCoaster)
+    }
+
 }
