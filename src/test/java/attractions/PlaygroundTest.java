@@ -34,6 +34,6 @@ public class PlaygroundTest {
 
     @Test
     public void hasMaxAge15__guestsAgedLessThanMaxCanRide(){
-        assertTrue(true, playground.isAllowed(youngVisitor));
+        assertTrue(playground.isAllowed(youngVisitor));
     }
 }
