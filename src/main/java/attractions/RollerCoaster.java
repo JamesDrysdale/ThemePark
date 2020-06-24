@@ -2,12 +2,16 @@ package attractions;
 
 import behaviours.IReviewed;
 import behaviours.ISecurity;
+import behaviours.ITicketed;
 import people.Visitor;
 
 public class RollerCoaster  extends Attraction implements ISecurity, IReviewed {
 
-    public RollerCoaster(String name, int rating) {
+    private double price;
+
+    public RollerCoaster(String name, int rating, double price) {
         super(name, rating);
+        this.price  = price;
     }
 
     // Rollercoaster has height and age restriction
@@ -18,5 +22,12 @@ public class RollerCoaster  extends Attraction implements ISecurity, IReviewed {
         }
         return false;
     }
+
+    //Get standard price of ticket
+    public double getPrice(){
+        return price;
+    }
+
+
 
 }
