@@ -4,17 +4,18 @@ import org.junit.Before;
 import org.junit.Test;
 import people.Visitor;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class PlaygroundTest {
     Playground playground;
     Visitor youngVisitor;
+    Visitor teenager;
 
     @Before
     public void setUp() throws Exception {
         playground = new Playground("Fun Zone", 7);
         youngVisitor = new Visitor(12, 180, 20);
+        teenager = new Visitor(16, 250, 50);
     }
 
     @Test
@@ -33,7 +34,12 @@ public class PlaygroundTest {
     }
 
     @Test
-    public void hasMaxAge15__guestsAgedLessThanMaxCanRide(){
+    public void hasMaxAge15__guestsAgedLessThanMaxCanUse(){
         assertTrue(playground.isAllowed(youngVisitor));
+    }
+
+    @Test
+    public void hasMaxAge15__guestsAgedMoreThanMaxCannotUse(){
+        assertFalse(playground.isAllowed(teenager));
     }
 }
